@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers
             string query = @"
                           select UserId, UserName, PasswordHash, ProfilePicture, Level,HoursPlayed,PhoneNumber,WarnCount,FactionWarnCount from dbo.Users";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("UserAppCon");
+            string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -41,11 +41,19 @@ namespace WebApplication1.Controllers
         public JsonResult Post(Users usr )
         {
             string query = @"
-                          insert into dbo.Users
-                          values(@Users)
+                          update dbo.Users
+                          set UserId=@UserId
+                          where UserName=@UserName
+                          where PasswordHash=@PasswordHash
+                          where ProfilePicture=@ProfilePicture
+                          where Level=@Level
+                          where HoursPlayed=@HoursPlayed
+                          where PhoneNumber=@PhoneNumber
+                          where WarnCount=@WarnCount
+                          where FactionWarnCount=@FactionWarnCount
                             ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("UserAppCon");
+            string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -53,12 +61,12 @@ namespace WebApplication1.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myCommand.Parameters.AddWithValue("@UserId", usr.UserId);
-                    myCommand.Parameters.AddWithValue("@UserName", usr.Username);
+                    myCommand.Parameters.AddWithValue("@UserName", usr.UserName);
                     myCommand.Parameters.AddWithValue("@PasswordHash", usr.PasswordHash);
                     myCommand.Parameters.AddWithValue("@ProfilePicture", usr.ProfilePicture);
                     myCommand.Parameters.AddWithValue("@Level", usr.Level);
                     myCommand.Parameters.AddWithValue("@HoursPlayed", usr.HoursPlayed);
-                    myCommand.Parameters.AddWithValue("@PhoneNumber", usr.PhomeNumber);
+                    myCommand.Parameters.AddWithValue("@PhoneNumber", usr.PhoneNumber);
                     myCommand.Parameters.AddWithValue("@WarnCount", usr.WarnCount);
                     myCommand.Parameters.AddWithValue("@FactionWarnCount", usr.FactionWarnCount);
 
@@ -79,7 +87,7 @@ namespace WebApplication1.Controllers
                           where UserId = @UserId
                            ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("UserAppCon");
+            string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {

@@ -17,7 +17,6 @@ options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHa
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = 
     new DefaultContractResolver());
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
