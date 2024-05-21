@@ -1,0 +1,229 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|c:\\users\\admin\\documents\\proiect ii final\\gameapp\\api\\webapplication1\\webapplication1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\models\\tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\models\\complaints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\complaints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\models\\clanmembers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\clanmembers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\models\\clans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\clans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\models\\factions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\factions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\models\\friends.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\friends.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\models\\factionmembers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\factionmembers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\webapplication1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\webapplication1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Friends.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Friends.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Friends.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Friends.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Friends.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T19:10:00.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Factions.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Factions.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Factions.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Factions.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Factions.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T19:08:34.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FactionMembers.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\FactionMembers.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\FactionMembers.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\FactionMembers.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\FactionMembers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T19:08:11.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Complaints.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Complaints.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Complaints.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Complaints.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Complaints.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T19:02:26.959Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Clans.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Clans.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Clans.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Clans.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Clans.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T19:01:09.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ClanMembers.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\ClanMembers.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\ClanMembers.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\ClanMembers.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\ClanMembers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T18:59:07.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "WebApplication1",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+              "RelativeDocumentMoniker": "WebApplication1\\WebApplication1.csproj",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+              "RelativeToolTip": "WebApplication1\\WebApplication1.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-21T18:58:15.323Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Program.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Program.cs",
+              "RelativeToolTip": "WebApplication1\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T18:40:35.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Users.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Users.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Users.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T19:12:30.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAowDEAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T20:00:05.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Tickets.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Tickets.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Tickets.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Tickets.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Tickets.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T19:10:12.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "WebApplication1\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\appsettings.Development.json",
+              "RelativeToolTip": "WebApplication1\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-21T19:15:54.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "WebApplication1\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "RelativeToolTip": "WebApplication1\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-21T18:39:44.79Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
