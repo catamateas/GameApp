@@ -19,7 +19,8 @@ namespace WebApplication1.Controllers
         public JsonResult Get()
         {
             string query = @"
-                          select UserId, UserName, PasswordHash, ProfilePicture, Level,HoursPlayed,PhoneNumber,WarnCount,FactionWarnCount from dbo.Users";
+                          select UserId, UserName, PasswordHash, ProfilePicture, Level,HoursPlayed,PhoneNumber,WarnCount,FactionWarnCount 
+                          from dbo.Users";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
             SqlDataReader myReader;
@@ -38,19 +39,13 @@ namespace WebApplication1.Controllers
 
         }
         [HttpPost]
-        public JsonResult Post(Users usr )
+        public JsonResult Post(Users usr)
         {
             string query = @"
-                          update dbo.Users
-                          set UserId=@UserId
-                          where UserName=@UserName
-                          where PasswordHash=@PasswordHash
-                          where ProfilePicture=@ProfilePicture
-                          where Level=@Level
-                          where HoursPlayed=@HoursPlayed
-                          where PhoneNumber=@PhoneNumber
-                          where WarnCount=@WarnCount
-                          where FactionWarnCount=@FactionWarnCount
+                          insert into dbo.Users
+                           (UserName, PasswordHash, ProfilePicture, Level, HoursPlayed, PhoneNumber, WarnCount, FactionWarnCount)
+                            values
+                           (@UserName, @PasswordHash, @ProfilePicture, @Level, @HoursPlayed, @PhoneNumber, @WarnCount, @FactionWarnCount)                  
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
@@ -60,7 +55,6 @@ namespace WebApplication1.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@UserId", usr.UserId);
                     myCommand.Parameters.AddWithValue("@UserName", usr.UserName);
                     myCommand.Parameters.AddWithValue("@PasswordHash", usr.PasswordHash);
                     myCommand.Parameters.AddWithValue("@ProfilePicture", usr.ProfilePicture);
@@ -69,6 +63,49 @@ namespace WebApplication1.Controllers
                     myCommand.Parameters.AddWithValue("@PhoneNumber", usr.PhoneNumber);
                     myCommand.Parameters.AddWithValue("@WarnCount", usr.WarnCount);
                     myCommand.Parameters.AddWithValue("@FactionWarnCount", usr.FactionWarnCount);
+                    
+                        myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+
+        }
+        [HttpPut]
+        public JsonResult Put(Users usr )
+        {
+            string query = @"
+                          update dbo.Users
+                          set UserName=@UserName,
+                              PasswordHash=@PasswordHash,
+                              ProfilePicture=@ProfilePicture,
+                              Level=@Level,
+                              HoursPlayed=@HoursPlayed,
+                              PhoneNumber=@PhoneNumber,
+                              WarnCount=@WarnCount,
+                              FactionWarnCount=@FactionWarnCount
+                          where UserId=@UserId
+                            ";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    
+                    myCommand.Parameters.AddWithValue("@UserName", usr.UserName);
+                    myCommand.Parameters.AddWithValue("@PasswordHash", usr.PasswordHash);
+                    myCommand.Parameters.AddWithValue("@ProfilePicture", usr.ProfilePicture);
+                    myCommand.Parameters.AddWithValue("@Level", usr.Level);
+                    myCommand.Parameters.AddWithValue("@HoursPlayed", usr.HoursPlayed);
+                    myCommand.Parameters.AddWithValue("@PhoneNumber", usr.PhoneNumber);
+                    myCommand.Parameters.AddWithValue("@WarnCount", usr.WarnCount);
+                    myCommand.Parameters.AddWithValue("@FactionWarnCount", usr.FactionWarnCount);
+                    myCommand.Parameters.AddWithValue("@UserId", usr.UserId);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
