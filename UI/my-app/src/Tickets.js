@@ -50,9 +50,9 @@ export class Tickets extends Component {
         const { tickets, Message } = this.state;
 
         return (
-            <div>
+            <div className="container">
                 <h3>Tickets</h3>
-                <div>
+                <div className="mb-3">
                     <textarea className="form-control" value={Message} onChange={this.changeMessage} placeholder="Add your ticket"></textarea>
                     <button className="btn btn-primary mt-2" onClick={this.addTicket}>Add Ticket</button>
                 </div>
@@ -85,6 +85,6 @@ export class Tickets extends Component {
                     </tbody>
                 </table>
             </div>
-        )
+        );
     }
 }

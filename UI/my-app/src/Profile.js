@@ -40,17 +40,19 @@ export class Profile extends Component {
         const { user } = this.state;
 
         return (
-            <div>
+            <div className="container">
                 <h3>Profile</h3>
-                <img src={variables.PHOTO_URL + user.ProfilePicture} alt="Profile" width="100" height="100" />
-                <p>Name: {user.UserName}</p>
-                <p>Level: {user.Level}</p>
-                <p>Hours Played: {user.HoursPlayed}</p>
-                <p>Phone Number: {user.PhoneNumber}</p>
-                <p>Warnings: {user.WarnCount}/3</p>
-                <p>Faction Warnings: {user.FactionWarnCount}/3</p>
-                <p>Faction: {user.FactionName} (Rank: {user.FactionRank})</p>
-                <p>Clan: {user.ClanName} (Rank: {user.ClanRank})</p>
+                <div className="card p-4">
+                    <img src={variables.PHOTO_URL + user.ProfilePicture} alt="Profile" width="100" height="100" className="rounded-circle mx-auto d-block" />
+                    <p className="text-center mt-3"><strong>{user.UserName}</strong></p>
+                    <p><strong>Level:</strong> {user.Level}</p>
+                    <p><strong>Hours Played:</strong> {user.HoursPlayed}</p>
+                    <p><strong>Phone Number:</strong> {user.PhoneNumber}</p>
+                    <p><strong>Warnings:</strong> {user.WarnCount}/3</p>
+                    <p><strong>Faction Warnings:</strong> {user.FactionWarnCount}/3</p>
+                    <p><strong>Faction:</strong> {user.FactionName} (Rank: {user.FactionRank})</p>
+                    <p><strong>Clan:</strong> {user.ClanName} (Rank: {user.ClanRank})</p>
+                </div>
             </div>
         );
     }

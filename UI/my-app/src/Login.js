@@ -72,49 +72,51 @@ export class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h3>Login</h3>
-                {this.state.errorMessage && <p className="text-danger">{this.state.errorMessage}</p>}
-                <form onSubmit={this.handleSubmit}>
-                    <div className="mb-3">
-                        <label className="form-label">Username</label>
-                        <input type="text" className="form-control" name="UserName" value={this.state.UserName} onChange={this.handleChange} required />
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label">Password</label>
-                        <input type="password" className="form-control" name="Password" value={this.state.Password} onChange={this.handleChange} required />
-                    </div>
-                    <button type="submit" className="btn btn-primary">Login</button>
-                </form>
-                <button type="button" className="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#signupModal">
-                    Sign Up
-                </button>
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="card p-4">
+                    <h3>Login</h3>
+                    {this.state.errorMessage && <p className="text-danger">{this.state.errorMessage}</p>}
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="mb-3">
+                            <label className="form-label">Username</label>
+                            <input type="text" className="form-control" name="UserName" value={this.state.UserName} onChange={this.handleChange} required />
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Password</label>
+                            <input type="password" className="form-control" name="Password" value={this.state.Password} onChange={this.handleChange} required />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Login</button>
+                    </form>
+                    <button type="button" className="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#signupModal">
+                        Sign Up
+                    </button>
 
-                {/* Signup Modal */}
-                <div className="modal fade" id="signupModal" tabIndex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="signupModalLabel">Sign Up</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                {this.state.signupErrorMessage && <p className="text-danger">{this.state.signupErrorMessage}</p>}
-                                <form onSubmit={this.handleSignupSubmit}>
-                                    <div className="mb-3">
-                                        <label className="form-label">Username</label>
-                                        <input type="text" className="form-control" name="signupUserName" value={this.state.signupUserName} onChange={this.handleChange} required />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">Password</label>
-                                        <input type="password" className="form-control" name="signupPassword" value={this.state.signupPassword} onChange={this.handleChange} required />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">Profile Picture</label>
-                                        <input type="file" className="form-control" name="signupPhoto" onChange={this.handleFileChange} required />
-                                    </div>
-                                    <button type="submit" className="btn btn-primary">Sign Up</button>
-                                </form>
+                    {/* Signup Modal */}
+                    <div className="modal fade" id="signupModal" tabIndex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="signupModalLabel">Sign Up</h5>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    {this.state.signupErrorMessage && <p className="text-danger">{this.state.signupErrorMessage}</p>}
+                                    <form onSubmit={this.handleSignupSubmit}>
+                                        <div className="mb-3">
+                                            <label className="form-label">Username</label>
+                                            <input type="text" className="form-control" name="signupUserName" value={this.state.signupUserName} onChange={this.handleChange} required />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">Password</label>
+                                            <input type="password" className="form-control" name="signupPassword" value={this.state.signupPassword} onChange={this.handleChange} required />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">Profile Picture</label>
+                                            <input type="file" className="form-control" name="signupPhoto" onChange={this.handleFileChange} required />
+                                        </div>
+                                        <button type="submit" className="btn btn-primary">Sign Up</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

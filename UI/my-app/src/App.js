@@ -8,6 +8,7 @@ import { Tickets } from './Tickets';
 import { Profile } from './Profile';
 import { Login } from './Login';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import './custom.css';
 
 function App() {
   const isLoggedIn = false; // Update this with actual login status check
@@ -15,26 +16,26 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App container">
-        <nav className="navbar navbar-expand-sm bg-light navbar-dark">
+        <nav className="navbar navbar-expand-sm">
           <ul className="navbar-nav">
             <li className="nav-item m-1">
-              <NavLink className="btn btn-light btn-outline-primary" to="/home">
+              <NavLink className="nav-link" to="/home">
                 Home
               </NavLink>
             </li>
             <li className="nav-item m-1">
-              <NavLink className="btn btn-light btn-outline-primary" to="/factions">
+              <NavLink className="nav-link" to="/factions">
                 Factions
               </NavLink>
             </li>
             <li className="nav-item m-1">
-              <NavLink className="btn btn-light btn-outline-primary" to="/clans">
+              <NavLink className="nav-link" to="/clans">
                 Clans
               </NavLink>
             </li>
             <li className="nav-item m-1">
               <div className="dropdown">
-                <button className="btn btn-light btn-outline-primary dropdown-toggle" type="button" id="topicsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <button className="nav-link dropdown-toggle" type="button" id="topicsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                   Topics
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="topicsDropdown">
@@ -49,7 +50,7 @@ function App() {
             </li>
             {isLoggedIn ? (
               <li className="nav-item m-1 dropdown">
-                <a className="btn btn-light btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="profile_picture_url" alt="Profile" width="30" height="30" className="rounded-circle" /> PlayerName
                 </a>
                 <ul className="dropdown-menu">
@@ -59,7 +60,7 @@ function App() {
               </li>
             ) : (
               <li className="nav-item m-1">
-                <NavLink className="btn btn-light btn-outline-primary" to="/login">
+                <NavLink className="nav-link" to="/login">
                   Login
                 </NavLink>
               </li>

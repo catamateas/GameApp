@@ -25,7 +25,7 @@ export class Complaints extends Component {
         const { complaints } = this.state;
 
         return (
-            <div>
+            <div className="container">
                 <h3>Complaints</h3>
                 <table className="table table-striped">
                     <thead>
@@ -56,6 +56,6 @@ export class Complaints extends Component {
                     </tbody>
                 </table>
             </div>
-        )
+        );
     }
 }

@@ -28,7 +28,7 @@ export class Home extends Component {
             <div className="row">
                 <div className="col-md-8">
                     <h3>Server Map</h3>
-                    <img src="https://bluepanel.bugged.ro/storage/online_small.jpeg?dontCache=1945" alt="Server Map" className="img-fluid" />
+                    <img src="path_to_map_image" alt="Server Map" className="img-fluid" />
                 </div>
                 <div className="col-md-4">
                     <h3>Friends List</h3>
