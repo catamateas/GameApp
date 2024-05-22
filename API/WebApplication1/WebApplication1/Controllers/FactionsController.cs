@@ -38,14 +38,13 @@ namespace WebApplication1.Controllers
 
         }
         [HttpPost]
-        public JsonResult Post(Users usr)
+        public JsonResult Post(Factions fct)
         {
             string query = @"
-                          insert into dbo.Users
-                           (UserName, PasswordHash, ProfilePicture, Level, HoursPlayed, PhoneNumber, WarnCount, FactionWarnCount)
+                          insert into dbo.Factions(FactionName, MemberCount, RequiredLevel)
                             values
-                           (@UserName, @PasswordHash, @ProfilePicture, @Level, @HoursPlayed, @PhoneNumber, @WarnCount, @FactionWarnCount)                  
-                            ";
+                           (@FactionName, @MemberCount, @RequiredLevel)                  
+                           ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
             SqlDataReader myReader;
@@ -54,15 +53,10 @@ namespace WebApplication1.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@UserName", usr.UserName);
-                    myCommand.Parameters.AddWithValue("@PasswordHash", usr.PasswordHash);
-                    myCommand.Parameters.AddWithValue("@ProfilePicture", usr.ProfilePicture);
-                    myCommand.Parameters.AddWithValue("@Level", usr.Level);
-                    myCommand.Parameters.AddWithValue("@HoursPlayed", usr.HoursPlayed);
-                    myCommand.Parameters.AddWithValue("@PhoneNumber", usr.PhoneNumber);
-                    myCommand.Parameters.AddWithValue("@WarnCount", usr.WarnCount);
-                    myCommand.Parameters.AddWithValue("@FactionWarnCount", usr.FactionWarnCount);
 
+                    myCommand.Parameters.AddWithValue("@FactionName", fct.FactionName);
+                    myCommand.Parameters.AddWithValue("@MemberCount", fct.MemberCount);
+                    myCommand.Parameters.AddWithValue("@RequiredLevel", fct.RequiredLevel);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -73,20 +67,16 @@ namespace WebApplication1.Controllers
 
         }
         [HttpPut]
-        public JsonResult Put(Users usr)
+        public JsonResult Put(Factions fct)
         {
             string query = @"
-                          update dbo.Users
-                          set UserName=@UserName,
-                              PasswordHash=@PasswordHash,
-                              ProfilePicture=@ProfilePicture,
-                              Level=@Level,
-                              HoursPlayed=@HoursPlayed,
-                              PhoneNumber=@PhoneNumber,
-                              WarnCount=@WarnCount,
-                              FactionWarnCount=@FactionWarnCount
-                          where UserId=@UserId
-                            ";
+                          update dbo.Factions
+                            set FactionName=@FactionName,
+                                MemberCount=@MemberCount,
+                                RequiredLevel=@RequiredLevel
+                            where FactionId=@FactionId
+                                ";
+                         
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
             SqlDataReader myReader;
@@ -96,16 +86,10 @@ namespace WebApplication1.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
 
-                    myCommand.Parameters.AddWithValue("@UserName", usr.UserName);
-                    myCommand.Parameters.AddWithValue("@PasswordHash", usr.PasswordHash);
-                    myCommand.Parameters.AddWithValue("@ProfilePicture", usr.ProfilePicture);
-                    myCommand.Parameters.AddWithValue("@Level", usr.Level);
-                    myCommand.Parameters.AddWithValue("@HoursPlayed", usr.HoursPlayed);
-                    myCommand.Parameters.AddWithValue("@PhoneNumber", usr.PhoneNumber);
-                    myCommand.Parameters.AddWithValue("@WarnCount", usr.WarnCount);
-                    myCommand.Parameters.AddWithValue("@FactionWarnCount", usr.FactionWarnCount);
-                    myCommand.Parameters.AddWithValue("@UserId", usr.UserId);
-
+                    myCommand.Parameters.AddWithValue("@FactionName", fct.FactionName);
+                    myCommand.Parameters.AddWithValue("@MemberCount", fct.MemberCount);
+                    myCommand.Parameters.AddWithValue("@RequiredLevel", fct.RequiredLevel);
+                    myCommand.Parameters.AddWithValue("@FactionId", fct.FactionId);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -119,8 +103,8 @@ namespace WebApplication1.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                          delete from dbo.Users
-                          where UserId = @UserId
+                          delete from dbo.Factions
+                          where FactionId = @FactionId
                            ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
@@ -130,7 +114,7 @@ namespace WebApplication1.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@UserId", id);
+                    myCommand.Parameters.AddWithValue("@FactionId", id);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
