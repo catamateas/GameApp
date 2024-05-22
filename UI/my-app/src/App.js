@@ -5,43 +5,65 @@ import { Factions } from './Factions';
 import { Clans } from './Clans';
 import { Complaints } from './Complaints';
 import { Tickets } from './Tickets';
+import { Profile } from './Profile';
+import { Login } from './Login';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 
 function App() {
+  const isLoggedIn = false; // Update this with actual login status check
+
   return (
     <BrowserRouter>
       <div className="App container">
-        <h3 className='d-flex justify-content-center m-3'>
-          React JS FrontEnd
-        </h3>
-
         <nav className="navbar navbar-expand-sm bg-light navbar-dark">
           <ul className="navbar-nav">
-            <li className="nav-item- m-1">
+            <li className="nav-item m-1">
               <NavLink className="btn btn-light btn-outline-primary" to="/home">
                 Home
               </NavLink>
             </li>
-            <li className="nav-item- m-1">
+            <li className="nav-item m-1">
               <NavLink className="btn btn-light btn-outline-primary" to="/factions">
                 Factions
               </NavLink>
             </li>
-            <li className="nav-item- m-1">
+            <li className="nav-item m-1">
               <NavLink className="btn btn-light btn-outline-primary" to="/clans">
                 Clans
               </NavLink>
             </li>
-            <li className="nav-item- m-1">
-              <NavLink className="btn btn-light btn-outline-primary" to="/complaints">
-                Complaints
-              </NavLink>
+            <li className="nav-item m-1">
+              <div className="dropdown">
+                <button className="btn btn-light btn-outline-primary dropdown-toggle" type="button" id="topicsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  Topics
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="topicsDropdown">
+                  <li>
+                    <NavLink className="dropdown-item" to="/complaints">Complaints</NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="dropdown-item" to="/tickets">Tickets</NavLink>
+                  </li>
+                </ul>
+              </div>
             </li>
-            <li className="nav-item- m-1">
-              <NavLink className="btn btn-light btn-outline-primary" to="/tickets">
-                Tickets
-              </NavLink>
-            </li>
+            {isLoggedIn ? (
+              <li className="nav-item m-1 dropdown">
+                <a className="btn btn-light btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="profile_picture_url" alt="Profile" width="30" height="30" className="rounded-circle" /> PlayerName
+                </a>
+                <ul className="dropdown-menu">
+                  <li><NavLink className="dropdown-item" to="/profile">Profile</NavLink></li>
+                  <li><a className="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+              </li>
+            ) : (
+              <li className="nav-item m-1">
+                <NavLink className="btn btn-light btn-outline-primary" to="/login">
+                  Login
+                </NavLink>
+              </li>
+            )}
           </ul>
         </nav>
 
@@ -51,6 +73,8 @@ function App() {
           <Route path='/clans' element={<Clans />} />
           <Route path='/complaints' element={<Complaints />} />
           <Route path='/tickets' element={<Tickets />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </div>
     </BrowserRouter>
