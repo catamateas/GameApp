@@ -8,10 +8,10 @@ namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClansController : ControllerBase
+    public class ComplaintsController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public ClansController(IConfiguration configuration)
+        public ComplaintsController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -19,8 +19,8 @@ namespace WebApplication1.Controllers
         public JsonResult Get()
         {
             string query = @"
-                          select ClanId, ClanName, MemberCount
-                          from dbo.Clans";
+                          select  ComplaintId, UserId, CreatedAt, Message
+                          from dbo.Complaints";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
             SqlDataReader myReader;
@@ -39,12 +39,13 @@ namespace WebApplication1.Controllers
 
         }
         [HttpPost]
-        public JsonResult Post(Clans cln)
+        public JsonResult Post(Complaints cpl)
         {
+            cpl.CreatedAt = DateTime.Now;
             string query = @"
-                          insert into dbo.Clans(ClanName, MemberCount)
+                          insert into dbo. Complaints(UserId, CreatedAt, Message)
                             values
-                           (@ClanName, @MemberCount)                  
+                           (@UserId, @CreatedAt, @Message)                  
                            ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
@@ -55,8 +56,9 @@ namespace WebApplication1.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
 
-                    myCommand.Parameters.AddWithValue("@ClanName", cln.ClanName);
-                    myCommand.Parameters.AddWithValue("@MemberCount", cln.MemberCount);
+                    myCommand.Parameters.AddWithValue("@UserId", cpl.UserId);
+                    myCommand.Parameters.Add("@CreatedAt", SqlDbType.DateTime).Value = cpl.CreatedAt;
+                    myCommand.Parameters.AddWithValue("@Message", cpl.Message);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -67,13 +69,15 @@ namespace WebApplication1.Controllers
 
         }
         [HttpPut]
-        public JsonResult Put(Clans cln)
+        public JsonResult Put(Complaints cpl)
         {
+            cpl.CreatedAt = DateTime.Now;
             string query = @"
-                          update dbo.Clans
-                            set ClanName=@ClanName,
-                            MemberCount=@MemberCount
-                            where ClanId=@ClanId
+                          update dbo.Complaints
+                            set UserId=@UserId,
+                                CreatedAt=@CreatedAt,
+                                Message=@Message
+                            where ComplaintId=@ComplaintId
                                 ";
 
             DataTable table = new DataTable();
@@ -85,9 +89,10 @@ namespace WebApplication1.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
 
-                    myCommand.Parameters.AddWithValue("@ClanName", cln.ClanName);
-                    myCommand.Parameters.AddWithValue("@MemberCount", cln.MemberCount);
-                    myCommand.Parameters.AddWithValue("@ClanId", cln.ClanId);
+                    myCommand.Parameters.AddWithValue("@UserId", cpl.UserId);
+                    myCommand.Parameters.Add("@CreatedAt", SqlDbType.DateTime).Value = cpl.CreatedAt;
+                    myCommand.Parameters.AddWithValue("@Message", cpl.Message);
+                    myCommand.Parameters.AddWithValue("@ComplaintId", cpl.ComplaintId);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -101,8 +106,8 @@ namespace WebApplication1.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                          delete from dbo.Clans
-                          where ClanId = @ClanId
+                          delete from dbo.Complaints
+                          where ComplaintId = @ComplaintId
                            ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
@@ -112,7 +117,7 @@ namespace WebApplication1.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@ClanId", id);
+                    myCommand.Parameters.AddWithValue("@ComplaintId", id);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
