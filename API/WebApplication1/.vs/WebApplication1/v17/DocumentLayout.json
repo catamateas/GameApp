@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|c:\\users\\admin\\documents\\proiect ii final\\gameapp\\api\\webapplication1\\webapplication1\\controllers\\factionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\factionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\webapplication1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D7235F4-AE6E-4619-AEC0-EF971494C8C1}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -70,7 +74,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Users.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Users.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\Users.cs",
@@ -79,12 +83,11 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-21T19:12:30.793Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Tickets.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Tickets.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\Tickets.cs",
@@ -93,25 +96,36 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-21T19:10:12.612Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FactionsController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Controllers\\FactionsController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\FactionsController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Controllers\\FactionsController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\FactionsController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwBEAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T16:31:52.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Controllers\\UsersController.cs",
               "RelativeToolTip": "WebApplication1\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAAG8AAAAAAAAAAAAjwH4AAABIAAAA",
+              "ViewState": "AQIAAHQAAAAAAAAAAAAIwJAAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T20:00:05.074Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T20:00:05.074Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "WebApplication1.csproj",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
               "RelativeDocumentMoniker": "WebApplication1\\WebApplication1.csproj",
@@ -119,12 +133,11 @@
               "RelativeToolTip": "WebApplication1\\WebApplication1.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-21T18:58:15.323Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T18:58:15.323Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Program.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Program.cs",
@@ -132,12 +145,11 @@
               "RelativeToolTip": "WebApplication1\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T18:40:35.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T18:40:35.871Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\appsettings.Development.json",
               "RelativeDocumentMoniker": "WebApplication1\\appsettings.Development.json",
@@ -145,12 +157,11 @@
               "RelativeToolTip": "WebApplication1\\appsettings.Development.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-21T19:15:54.682Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T19:15:54.682Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Factions.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Factions.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\Factions.cs",
@@ -158,12 +169,11 @@
               "RelativeToolTip": "WebApplication1\\Models\\Factions.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:08:34.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T19:08:34.111Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "FactionMembers.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\FactionMembers.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\FactionMembers.cs",
@@ -171,12 +181,11 @@
               "RelativeToolTip": "WebApplication1\\Models\\FactionMembers.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:08:11.194Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T19:08:11.194Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Complaints.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Complaints.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\Complaints.cs",
@@ -184,12 +193,11 @@
               "RelativeToolTip": "WebApplication1\\Models\\Complaints.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:02:26.959Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T19:02:26.959Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ClanMembers.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\ClanMembers.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\ClanMembers.cs",
@@ -197,12 +205,11 @@
               "RelativeToolTip": "WebApplication1\\Models\\ClanMembers.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T18:59:07.92Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T18:59:07.92Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "WebApplication1.http",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\WebApplication1.http",
               "RelativeDocumentMoniker": "WebApplication1\\WebApplication1.http",
@@ -210,12 +217,11 @@
               "RelativeToolTip": "WebApplication1\\WebApplication1.http",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2024-05-21T20:47:50.99Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T20:47:50.99Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Clans.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Clans.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\Clans.cs",
@@ -223,12 +229,11 @@
               "RelativeToolTip": "WebApplication1\\Models\\Clans.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:01:09.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T19:01:09.72Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Friends.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Models\\Friends.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Models\\Friends.cs",
@@ -236,12 +241,11 @@
               "RelativeToolTip": "WebApplication1\\Models\\Friends.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:10:00.573Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T19:10:00.573Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\Proiect II Final\\GameApp\\API\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "WebApplication1\\Properties\\launchSettings.json",
@@ -249,8 +253,7 @@
               "RelativeToolTip": "WebApplication1\\Properties\\launchSettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-21T18:39:44.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T18:39:44.79Z"
             }
           ]
         }

@@ -3,15 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using WebApplication1.Models;
-
 namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class FactionsController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public UsersController(IConfiguration configuration)
+        public FactionsController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -19,8 +18,8 @@ namespace WebApplication1.Controllers
         public JsonResult Get()
         {
             string query = @"
-                          select UserId, UserName, PasswordHash, ProfilePicture, Level,HoursPlayed,PhoneNumber,WarnCount,FactionWarnCount 
-                          from dbo.Users";
+                          select FactionId, FactionName, MemberCount, RequiredLevel 
+                          from dbo.Factions";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("GameAppCon");
             SqlDataReader myReader;
@@ -63,8 +62,8 @@ namespace WebApplication1.Controllers
                     myCommand.Parameters.AddWithValue("@PhoneNumber", usr.PhoneNumber);
                     myCommand.Parameters.AddWithValue("@WarnCount", usr.WarnCount);
                     myCommand.Parameters.AddWithValue("@FactionWarnCount", usr.FactionWarnCount);
-                    
-                        myReader = myCommand.ExecuteReader();
+
+                    myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
                     myCon.Close();
@@ -74,7 +73,7 @@ namespace WebApplication1.Controllers
 
         }
         [HttpPut]
-        public JsonResult Put(Users usr )
+        public JsonResult Put(Users usr)
         {
             string query = @"
                           update dbo.Users
@@ -96,7 +95,7 @@ namespace WebApplication1.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    
+
                     myCommand.Parameters.AddWithValue("@UserName", usr.UserName);
                     myCommand.Parameters.AddWithValue("@PasswordHash", usr.PasswordHash);
                     myCommand.Parameters.AddWithValue("@ProfilePicture", usr.ProfilePicture);
@@ -117,7 +116,7 @@ namespace WebApplication1.Controllers
 
         }
         [HttpDelete]
-        public JsonResult Delete(int id )
+        public JsonResult Delete(int id)
         {
             string query = @"
                           delete from dbo.Users
@@ -144,3 +143,4 @@ namespace WebApplication1.Controllers
 
     }
 }
+
