@@ -95,8 +95,7 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-21T19:12:30.793Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -158,8 +157,7 @@
               "RelativeToolTip": "WebApplication1\\appsettings.Development.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAACTAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-21T19:15:54.682Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T19:15:54.682Z"
             },
             {
               "$type": "Document",
@@ -207,8 +205,7 @@
               "RelativeToolTip": "WebApplication1\\Controllers\\UsersController.cs",
               "ViewState": "AQIAACEAAAAAAAAAAAAowJAAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T20:00:05.074Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-21T20:00:05.074Z"
             },
             {
               "$type": "Document",
