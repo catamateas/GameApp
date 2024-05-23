@@ -7,7 +7,7 @@ import { Complaints } from './Complaints';
 import { Tickets } from './Tickets';
 import { Profile } from './Profile';
 import { Login } from './Login';
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, NavLink, Navigate } from 'react-router-dom';
 import './custom.css';
 
 function App() {
@@ -76,6 +76,7 @@ function App() {
           <Route path='/tickets' element={<Tickets />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/' element={<Navigate to="/home" replace />} />
         </Routes>
       </div>
     </BrowserRouter>
