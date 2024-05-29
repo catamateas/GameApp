@@ -82,7 +82,7 @@ export class Login extends Component {
         .then(response => {
             if (response.status !== 200) {
                 return response.json().then(data => {
-                    throw new Error(data.message || 'An error occurred. Please try again.');
+                    throw new Error(data.message || 'Your level is too low to join this faction.');
                 });
             }
             return response.json();
@@ -129,7 +129,7 @@ export class Login extends Component {
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
-                                    {this.state.signupErrormessage && <p className="text-danger">{this.state.signupErrormessage}</p>}
+                                {this.state.signupErrormessage && <p className={this.state.signupErrormessage === 'User registered successfully. You can now log in.' ? 'success-message' : 'text-danger'}>{this.state.signupErrormessage}</p>}
                                     <form onSubmit={this.handleSignupSubmit}>
                                         <div className="mb-3">
                                             <label className="form-label">Username</label>

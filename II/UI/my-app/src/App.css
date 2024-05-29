@@ -36,6 +36,10 @@
   color: #fff !important;
 }
 
+.success-message {
+  color: green;
+  font-weight: bold;
+}
 
 @keyframes App-logo-spin {
   from {
