@@ -14,6 +14,7 @@ import './custom.css';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [profilePicture, setProfilePicture] = useState(null);
 
   useEffect(() => {
     const user = localStorage.getItem('user');
@@ -23,6 +24,10 @@ function App() {
         console.log('User from localStorage:', parsedUser);
         setIsLoggedIn(true);
         setCurrentUser(parsedUser);
+
+        const profilePictures = JSON.parse(localStorage.getItem('profilePictures')) || {};
+        const userProfilePicture = profilePictures[parsedUser.userId];
+        setProfilePicture(userProfilePicture ? `data:image/png;base64,${userProfilePicture}` : null);
       } catch (error) {
         console.error("Failed to parse user from localStorage", error);
       }
@@ -33,11 +38,16 @@ function App() {
     setIsLoggedIn(true);
     setCurrentUser(user);
     localStorage.setItem('user', JSON.stringify(user));
+
+    const profilePictures = JSON.parse(localStorage.getItem('profilePictures')) || {};
+    const userProfilePicture = profilePictures[user.userId];
+    setProfilePicture(userProfilePicture ? `data:image/png;base64,${userProfilePicture}` : null);
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCurrentUser(null);
+    setProfilePicture(null);
     localStorage.removeItem('user');
   };
 
@@ -45,7 +55,7 @@ function App() {
     <BrowserRouter>
       <div className="App container">
         <nav className="navbar navbar-expand-sm">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav me-auto">
             <li className="nav-item m-1">
               <NavLink className="nav-link" to="/home">
                 Home
@@ -76,10 +86,17 @@ function App() {
                 </ul>
               </div>
             </li>
+          </ul>
+          <ul className="navbar-nav ms-auto">
             {isLoggedIn ? (
               <li className="nav-item m-1 dropdown">
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="profile_picture_url" alt="Profile" width="30" height="30" className="rounded-circle" /> {currentUser.UserName}
+                  {profilePicture ? (
+                    <img src={profilePicture} alt="Profile" width="30" height="30" className="rounded-circle" />
+                  ) : (
+                    <img src="default_profile_picture_url" alt="Profile" width="30" height="30" className="rounded-circle" />
+                  )}
+                  {currentUser.UserName}
                 </a>
                 <ul className="dropdown-menu">
                   <li><NavLink className="dropdown-item" to="/profile">Profile</NavLink></li>

@@ -9,7 +9,8 @@ export class Clans extends Component {
             modalTitle: "",
             clanId: 0,
             clanName: "",
-            description: ""
+            description: "",
+            userMemberships: []
         };
     }
 
@@ -19,6 +20,13 @@ export class Clans extends Component {
             .then(data => {
                 this.setState({ clans: data });
             });
+
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            const memberships = JSON.parse(localStorage.getItem('memberships')) || {};
+            const userMemberships = memberships[user.userId] || [];
+            this.setState({ userMemberships });
+        }
     }
 
     componentDidMount() {
@@ -52,7 +60,7 @@ export class Clans extends Component {
     }
 
     createClick() {
-        fetch(variables.API_URL + 'clan', { // Asigură-te că URL-ul este corect
+        fetch(variables.API_URL + 'clan', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -71,10 +79,9 @@ export class Clans extends Component {
             alert('Failed');
         })
     }
-    
 
     updateClick() {
-        fetch(variables.API_URL + 'clan/' + this.state.clanId, { // Verifică URL-ul
+        fetch(variables.API_URL + 'clan/' + this.state.clanId, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -90,7 +97,6 @@ export class Clans extends Component {
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
-            // Handle empty response
             if (res.status === 204) {
                 return;
             }
@@ -105,7 +111,7 @@ export class Clans extends Component {
             alert('Failed: ' + error.message);
         });
     }
-    
+
     deleteClick(id) {
         if (window.confirm('Are you sure?')) {
             fetch(variables.API_URL + 'clan/' + id, {
@@ -119,7 +125,6 @@ export class Clans extends Component {
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
                 }
-                // Handle empty response
                 if (res.status === 204) {
                     return;
                 }
@@ -135,7 +140,46 @@ export class Clans extends Component {
             });
         }
     }
-    
+
+    joinClan(clanId) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            const memberships = JSON.parse(localStorage.getItem('memberships')) || {};
+            const userMemberships = memberships[user.userId] || [];
+
+            if (!userMemberships.includes(clanId)) {
+                userMemberships.push(clanId);
+                memberships[user.userId] = userMemberships;
+                localStorage.setItem('memberships', JSON.stringify(memberships));
+                this.setState({ userMemberships });
+                alert('You have successfully joined the clan!');
+            } else {
+                alert('You are already a member of this clan.');
+            }
+        } else {
+            alert('You need to be logged in to join a clan.');
+        }
+    }
+
+    leaveClan(clanId) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            const memberships = JSON.parse(localStorage.getItem('memberships')) || {};
+            let userMemberships = memberships[user.userId] || [];
+
+            if (userMemberships.includes(clanId)) {
+                userMemberships = userMemberships.filter(id => id !== clanId);
+                memberships[user.userId] = userMemberships;
+                localStorage.setItem('memberships', JSON.stringify(memberships));
+                this.setState({ userMemberships });
+                alert('You have successfully left the clan!');
+            } else {
+                alert('You are not a member of this clan.');
+            }
+        } else {
+            alert('You need to be logged in to leave a clan.');
+        }
+    }
 
     render() {
         const {
@@ -143,7 +187,8 @@ export class Clans extends Component {
             modalTitle,
             clanId,
             clanName,
-            description
+            description,
+            userMemberships
         } = this.state;
         const { isLoggedIn } = this.props;
 
@@ -161,23 +206,15 @@ export class Clans extends Component {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>
-                                clanId
-                            </th>
-                            <th>
-                                clanName
-                            </th>
-                            <th>
-                                description
-                            </th>
-                            <th>
-                                Options
-                            </th>
+                            <th>clanId</th>
+                            <th>clanName</th>
+                            <th>description</th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
                         {clans.map(clan =>
-                            <tr key={clan.clanId}>
+                            <tr key={clan.clanId} className={userMemberships.includes(clan.clanId) ? 'table-success' : ''}>
                                 <td>{clan.clanId}</td>
                                 <td>{clan.clanName}</td>
                                 <td>{clan.description}</td>
@@ -201,6 +238,19 @@ export class Clans extends Component {
                                                     <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5.5 0 0 0-0.5.5zM4.5.5v1a.5.5 0 1 1-.5-.5zM6.5 0v1h4v-1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5.5M4.5.5v1a.5.5 0 0 1-.998.06M4.5-.528a.5.5 0 0 1-.528-.47l-.5.5a.5.5 0 0 1 .998.058M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
                                                 </svg>
                                             </button>
+                                            {!userMemberships.includes(clan.clanId) ? (
+                                                <button type="button"
+                                                    className="btn btn-success mr-1"
+                                                    onClick={() => this.joinClan(clan.clanId)}>
+                                                    Join Clan
+                                                </button>
+                                            ) : (
+                                                <button type="button"
+                                                    className="btn btn-danger mr-1"
+                                                    onClick={() => this.leaveClan(clan.clanId)}>
+                                                    Leave Clan
+                                                </button>
+                                            )}
                                         </>
                                     )}
                                 </td>

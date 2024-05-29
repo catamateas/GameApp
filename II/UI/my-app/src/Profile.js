@@ -14,18 +14,22 @@ export class Profile extends Component {
             error: null,
             newPassword: "",
             showModal: false,
-            redirectToLogin: false
+            redirectToLogin: false,
+            profilePicture: ""
         };
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleProfilePictureChange = this.handleProfilePictureChange.bind(this);
     }
 
     componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user && user.userId) {
+            const profilePictures = JSON.parse(localStorage.getItem('profilePictures')) || {};
+            const profilePicture = profilePictures[user.userId] || "";
             fetch(`${variables.API_URL}user/${user.userId}`)
                 .then(response => {
                     if (!response.ok) {
@@ -34,7 +38,7 @@ export class Profile extends Component {
                     return response.json();
                 })
                 .then(data => {
-                    this.setState({ user: data });
+                    this.setState({ user: data, profilePicture });
                     if (data.factionId) {
                         return fetch(`${variables.API_URL}faction/${data.factionId}`);
                     } else {
@@ -114,6 +118,9 @@ export class Profile extends Component {
         })
         .then(() => {
             localStorage.removeItem('user');
+            const profilePictures = JSON.parse(localStorage.getItem('profilePictures')) || {};
+            delete profilePictures[user.userId];
+            localStorage.setItem('profilePictures', JSON.stringify(profilePictures));
             alert('Delete completed');
             this.setState({ redirectToLogin: true });
         })
@@ -122,8 +129,23 @@ export class Profile extends Component {
         });
     }
 
+    handleProfilePictureChange(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+                const profilePictures = JSON.parse(localStorage.getItem('profilePictures')) || {};
+                profilePictures[this.state.user.userId] = base64String;
+                localStorage.setItem('profilePictures', JSON.stringify(profilePictures));
+                this.setState({ profilePicture: base64String });
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
     render() {
-        const { user, faction, loading, error, showModal, newPassword, redirectToLogin } = this.state;
+        const { user, faction, loading, error, showModal, newPassword, redirectToLogin, profilePicture } = this.state;
 
         if (redirectToLogin) {
             return <Navigate to="/login" />;
@@ -153,13 +175,23 @@ export class Profile extends Component {
                     <div className="card-body text-center">
                         {user && (
                             <>
-                                <img src={variables.PHOTO_URL + user.profilePicture} alt="Profile" className="rounded-circle mb-3" style={{ width: '150px', height: '150px' }} />
+                                {profilePicture ? (
+                                    <img src={`data:image/png;base64,${profilePicture}`} alt="Profile" className="rounded-circle mb-3" style={{ width: '150px', height: '150px' }} />
+                                ) : (
+                                    <img src={variables.PHOTO_URL + user.profilePicture} alt="Profile" className="rounded-circle mb-3" style={{ width: '150px', height: '150px' }} />
+                                )}
                                 <h3 className="card-title">{user.userName}</h3>
-                                <p className="text-white" style={{ color: '#6c757d' }}>{user.email}</p>
+                                <p className="text-white">{user.email}</p> {/* Schimbăm culoarea textului pentru email */}
                                 <p><strong>Level:</strong> {user.level}</p>
                                 <p><strong>Faction:</strong> {faction ? faction.factionName : 'None'}</p>
                                 <button className="btn btn-primary mt-3" onClick={this.handleChange}>Change Password</button>
                                 <button className="btn btn-danger mt-3 ms-2" onClick={this.handleDelete}>Delete Account</button>
+                                <div className="mt-3">
+                                    <label className="btn btn-secondary">
+                                        Change Profile Picture
+                                        <input type="file" accept="image/*" onChange={this.handleProfilePictureChange} hidden />
+                                    </label>
+                                </div>
                             </>
                         )}
                     </div>
