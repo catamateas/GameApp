@@ -20,6 +20,31 @@ public class UserController : ControllerBase
         return Ok(await _context.Users.Include(u => u.Faction).ToListAsync());
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetUserById(int id)
+    {
+        var user = await _context.Users
+            .Include(u => u.Faction)
+            .FirstOrDefaultAsync(u => u.UserId == id);
+
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var userDto = new UserDTO
+        {
+            UserId = user.UserId,
+            UserName = user.UserName,
+            Email = user.Email,
+            Level = user.Level,
+            FactionId = user.FactionId
+        };
+
+        return Ok(userDto);
+    }
+
+
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] UserDTO userDto)
     {

@@ -52,6 +52,7 @@ public class AuthenticationController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         var user = await _context.Users
+            .Include(u => u.Faction) // Include faction details
             .FirstOrDefaultAsync(u => u.UserName == request.Username && u.Password == request.Password);
 
         if (user == null)
@@ -59,7 +60,16 @@ public class AuthenticationController : ControllerBase
             return Unauthorized("Invalid username or password.");
         }
 
-        return Ok("Login successful.");
+        var userDto = new UserDTO
+        {
+            UserId = user.UserId,
+            UserName = user.UserName,
+            Email = user.Email,
+            Level = user.Level,
+            FactionId = user.FactionId
+        };
+
+        return Ok(userDto);
     }
 }
 

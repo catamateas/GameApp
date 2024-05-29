@@ -20,6 +20,7 @@ function App() {
     if (user) {
       try {
         const parsedUser = JSON.parse(user);
+        console.log('User from localStorage:', parsedUser); // Adaugă acest console.log pentru a verifica datele
         setIsLoggedIn(true);
         setCurrentUser(parsedUser);
       } catch (error) {

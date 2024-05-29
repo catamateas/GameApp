@@ -20,6 +20,26 @@ public class FactionController : ControllerBase
         return Ok(await _context.Factions.ToListAsync());
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetFactionById(int id)
+    {
+        var faction = await _context.Factions.FindAsync(id);
+
+        if (faction == null)
+        {
+            return NotFound();
+        }
+
+        var factionDto = new FactionDTO
+        {
+            FactionId = faction.FactionId,
+            FactionName = faction.FactionName,
+            RequiredLevel = faction.RequiredLevel
+        };
+
+        return Ok(factionDto);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateFaction([FromBody] FactionDTO factionDto)
     {

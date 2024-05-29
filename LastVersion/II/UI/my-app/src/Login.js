@@ -52,6 +52,8 @@ export class Login extends Component {
             return response.json();
         })
         .then(data => {
+            localStorage.setItem('user', JSON.stringify(data));
+            console.log('User saved to localStorage:', data); // Adaugă acest console.log pentru a verifica datele
             this.props.onLogin(data);
             this.setState({ redirectToHome: true });
         })
@@ -59,6 +61,7 @@ export class Login extends Component {
             this.setState({ errormessage: error.message });
         });
     }
+    
 
     handleSignupSubmit(e) {
         e.preventDefault();
@@ -159,3 +162,21 @@ export class Login extends Component {
         );
     }
 }
+
+function getUserIdFromLocalStorage() {
+    const user = localStorage.getItem('user');
+    if (user) {
+        try {
+            const userObj = JSON.parse(user);
+            return userObj.userId; // Asigură-te că userId este o cheie în obiectul salvat
+        } catch (e) {
+            console.error("Failed to parse user from localStorage", e);
+            return null;
+        }
+    }
+    return null;
+}
+
+// Folosirea funcției
+const userId = getUserIdFromLocalStorage();
+console.log('User ID:', userId);
