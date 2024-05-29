@@ -5,15 +5,15 @@ export class Complaints extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            complaints: []
+            tickets: []
         };
     }
 
     refreshList() {
-        fetch(variables.API_URL + 'complaints')
+        fetch(variables.API_URL + 'ticket')
             .then(response => response.json())
             .then(data => {
-                this.setState({ complaints: data });
+                this.setState({ tickets: data });
             });
     }
 
@@ -22,37 +22,31 @@ export class Complaints extends Component {
     }
 
     render() {
-        const { complaints } = this.state;
+        const { tickets } = this.state;
 
         return (
             <div className="container">
-                <h3>Complaints</h3>
+                <h3>Tickets</h3>
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>
-                                complaintId
-                            </th>
-                            <th>
-                                userId
-                            </th>
-                            <th>
-                                createdAt
-                            </th>
-                            <th>
-                                message
-                            </th>
+                            <th>Ticket ID</th>
+                            <th>User ID</th>
+                            <th>Username</th>
+                            <th>Created At</th>
+                            <th>Message</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {complaints.map(complaint =>
-                            <tr key={complaint.complaintId}>
-                                <td>{complaint.complaintId}</td>
-                                <td>{complaint.userId}</td>
-                                <td>{complaint.createdAt}</td>
-                                <td>{complaint.message}</td>
+                        {tickets.map(ticket => (
+                            <tr key={ticket.ticketId}>
+                                <td>{ticket.ticketId}</td>
+                                <td>{ticket.userId}</td>
+                                <td>{ticket.userName}</td>
+                                <td>{ticket.createdAt}</td>
+                                <td>{ticket.message}</td>
                             </tr>
-                        )}
+                        ))}
                     </tbody>
                 </table>
             </div>

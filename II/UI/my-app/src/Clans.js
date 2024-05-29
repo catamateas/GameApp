@@ -9,12 +9,12 @@ export class Clans extends Component {
             modalTitle: "",
             clanId: 0,
             clanName: "",
-            memberCount: 0
+            description: ""
         };
     }
 
     refreshList() {
-        fetch(variables.API_URL + 'clans')
+        fetch(variables.API_URL + 'clan')
             .then(response => response.json())
             .then(data => {
                 this.setState({ clans: data });
@@ -29,8 +29,8 @@ export class Clans extends Component {
         this.setState({ clanName: e.target.value });
     }
 
-    changememberCount = (e) => {
-        this.setState({ memberCount: e.target.value });
+    changedescription = (e) => {
+        this.setState({ description: e.target.value });
     }
 
     addClick() {
@@ -38,7 +38,7 @@ export class Clans extends Component {
             modalTitle: "Add Clan",
             clanId: 0,
             clanName: "",
-            memberCount: 0
+            description: ""
         });
     }
 
@@ -47,12 +47,12 @@ export class Clans extends Component {
             modalTitle: "Edit Clan",
             clanId: clan.clanId,
             clanName: clan.clanName,
-            memberCount: clan.memberCount
+            description: clan.description
         });
     }
 
     createClick() {
-        fetch(variables.API_URL + 'clans', {
+        fetch(variables.API_URL + 'clan', { // Asigură-te că URL-ul este corect
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -60,20 +60,21 @@ export class Clans extends Component {
             },
             body: JSON.stringify({
                 clanName: this.state.clanName,
-                memberCount: this.state.memberCount
+                description: this.state.description
             })
         })
-            .then(res => res.json())
-            .then((result) => {
-                alert(result.message || "Clan created successfully!");
-                this.refreshList();
-            }, (error) => {
-                alert('Failed');
-            })
+        .then(res => res.json())
+        .then((result) => {
+            alert(result.message || "Clan created successfully!");
+            this.refreshList();
+        }, (error) => {
+            alert('Failed');
+        })
     }
+    
 
     updateClick() {
-        fetch(variables.API_URL + 'clans/' + this.state.clanId, { // Corrected URL
+        fetch(variables.API_URL + 'clan/' + this.state.clanId, { // Verifică URL-ul
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -82,9 +83,38 @@ export class Clans extends Component {
             body: JSON.stringify({
                 clanId: this.state.clanId,
                 clanName: this.state.clanName,
-                memberCount: this.state.memberCount
+                description: this.state.description
             })
         })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Handle empty response
+            if (res.status === 204) {
+                return;
+            }
+            return res.json();
+        })
+        .then((result) => {
+            alert(result ? (result.message || "Clan updated successfully!") : "Clan updated successfully!");
+            this.refreshList();
+        })
+        .catch((error) => {
+            console.error('There was a problem with the update request:', error);
+            alert('Failed: ' + error.message);
+        });
+    }
+    
+    deleteClick(id) {
+        if (window.confirm('Are you sure?')) {
+            fetch(variables.API_URL + 'clan/' + id, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
@@ -96,44 +126,16 @@ export class Clans extends Component {
                 return res.json();
             })
             .then((result) => {
-                alert(result ? (result.message || "Clan updated successfully!") : "Clan updated successfully!");
+                alert(result ? (result.message || "Clan deleted successfully!") : "Clan deleted successfully!");
                 this.refreshList();
             })
             .catch((error) => {
-                console.error('There was a problem with the update request:', error);
+                console.error('There was a problem with the delete request:', error);
                 alert('Failed: ' + error.message);
             });
-    }
-
-    deleteClick(id) {
-        if (window.confirm('Are you sure?')) {
-            fetch(variables.API_URL + 'clans/' + id, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    // Handle empty response
-                    if (res.status === 204) {
-                        return;
-                    }
-                    return res.json();
-                })
-                .then((result) => {
-                    alert(result ? (result.message || "Clan deleted successfully!") : "Clan deleted successfully!");
-                    this.refreshList();
-                })
-                .catch((error) => {
-                    console.error('There was a problem with the delete request:', error);
-                    alert('Failed: ' + error.message);
-                });
         }
     }
+    
 
     render() {
         const {
@@ -141,7 +143,7 @@ export class Clans extends Component {
             modalTitle,
             clanId,
             clanName,
-            memberCount
+            description
         } = this.state;
 
         return (
@@ -163,7 +165,7 @@ export class Clans extends Component {
                                 clanName
                             </th>
                             <th>
-                                memberCount
+                                description
                             </th>
                             <th>
                                 Options
@@ -175,7 +177,7 @@ export class Clans extends Component {
                             <tr key={clan.clanId}>
                                 <td>{clan.clanId}</td>
                                 <td>{clan.clanName}</td>
-                                <td>{clan.memberCount}</td>
+                                <td>{clan.description}</td>
                                 <td>
                                     <button type="button"
                                         className="btn btn-light mr-1"
@@ -216,10 +218,10 @@ export class Clans extends Component {
                                         onChange={this.changeclanName} />
                                 </div>
                                 <div className="input-group mb-3">
-                                    <span className="input-group-text">memberCount</span>
-                                    <input type="number" className="form-control"
-                                        value={memberCount}
-                                        onChange={this.changememberCount} />
+                                    <span className="input-group-text">description</span>
+                                    <input type="text" className="form-control"
+                                        value={description}
+                                        onChange={this.changedescription} />
                                 </div>
 
                                 {clanId === 0 ?

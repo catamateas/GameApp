@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { variables } from './Variables';
+import { Navigate } from 'react-router-dom';
 
 export class Login extends Component {
     constructor(props) {
@@ -11,66 +12,94 @@ export class Login extends Component {
             errormessage: "",
             signupUserName: "",
             signupPassword: "",
-            signupPhoto: null,
-            signupErrormessage: ""
+            signupEmail: "",
+            signupLevel: 1,
+            signupFactionId: 0,
+            signupErrormessage: "",
+            redirectToHome: false
         };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
     }
 
-    handleChange = (e) => {
+    handleChange(e) {
         const { name, value } = e.target;
         this.setState({ [name]: value });
     }
 
-    handleFileChange = (e) => {
-        this.setState({ signupPhoto: e.target.files[0] });
-    }
-
-    handleSubmit = (e) => {
+    handleSubmit(e) {
         e.preventDefault();
-        fetch(variables.API_URL + 'user/login', {
+        fetch(variables.API_URL + 'authentication/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                UserName: this.state.UserName,
+                Username: this.state.UserName,
                 Password: this.state.Password
             })
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Redirect to profile or home page
-            } else {
-                this.setState({ errormessage: data.message });
+        .then(response => {
+            if (response.status === 401) {
+                throw new Error('Invalid username or password.');
             }
+            if (response.status !== 200) {
+                throw new Error('An error occurred. Please try again.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem('user', JSON.stringify(data));
+            console.log('User saved to localStorage:', data); // Adaugă acest console.log pentru a verifica datele
+            this.props.onLogin(data);
+            this.setState({ redirectToHome: true });
+        })
+        .catch(error => {
+            this.setState({ errormessage: error.message });
         });
     }
+    
 
-    handleSignupSubmit = (e) => {
+    handleSignupSubmit(e) {
         e.preventDefault();
-
-        const formData = new FormData();
-        formData.append('UserName', this.state.signupUserName);
-        formData.append('Password', this.state.signupPassword);
-        formData.append('ProfilePicture', this.state.signupPhoto);
-
-        fetch(variables.API_URL + 'users', {
+        fetch(variables.API_URL + 'authentication/register', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                Username: this.state.signupUserName,
+                Password: this.state.signupPassword,
+                Email: this.state.signupEmail,
+                Level: this.state.signupLevel,
+                FactionId: this.state.signupFactionId
+            })
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Handle successful signup (e.g., close modal and show success message)
-            } else {
-                this.setState({ signupErrormessage: data.message });
+        .then(response => {
+            if (response.status !== 200) {
+                return response.json().then(data => {
+                    throw new Error(data.message || 'An error occurred. Please try again.');
+                });
             }
+            return response.json();
+        })
+        .then(data => {
+            this.setState({ signupErrormessage: 'User registered successfully. You can now log in.' });
+        })
+        .catch(error => {
+            this.setState({ signupErrormessage: error.message });
         });
     }
 
     render() {
+        if (this.state.redirectToHome) {
+            return <Navigate to="/home" />;
+        }
+
         return (
             <div className="d-flex justify-content-center align-items-center vh-100">
                 <div className="card p-4">
@@ -111,8 +140,16 @@ export class Login extends Component {
                                             <input type="password" className="form-control" name="signupPassword" value={this.state.signupPassword} onChange={this.handleChange} required />
                                         </div>
                                         <div className="mb-3">
-                                            <label className="form-label">Profile Picture</label>
-                                            <input type="file" className="form-control" name="signupPhoto" onChange={this.handleFileChange} required />
+                                            <label className="form-label">Email</label>
+                                            <input type="email" className="form-control" name="signupEmail" value={this.state.signupEmail} onChange={this.handleChange} required />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">Level</label>
+                                            <input type="number" className="form-control" name="signupLevel" value={this.state.signupLevel} onChange={this.handleChange} required />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">Faction ID</label>
+                                            <input type="number" className="form-control" name="signupFactionId" value={this.state.signupFactionId} onChange={this.handleChange} required />
                                         </div>
                                         <button type="submit" className="btn btn-primary">Sign Up</button>
                                     </form>
@@ -125,3 +162,21 @@ export class Login extends Component {
         );
     }
 }
+
+function getUserIdFromLocalStorage() {
+    const user = localStorage.getItem('user');
+    if (user) {
+        try {
+            const userObj = JSON.parse(user);
+            return userObj.userId; // Asigură-te că userId este o cheie în obiectul salvat
+        } catch (e) {
+            console.error("Failed to parse user from localStorage", e);
+            return null;
+        }
+    }
+    return null;
+}
+
+// Folosirea funcției
+const userId = getUserIdFromLocalStorage();
+console.log('User ID:', userId);

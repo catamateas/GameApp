@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XSMDs0NSNQY8Qfcuq+XG3vxPYFNAep9EhWXW6cID3V/1Dnhta+kUJkr8H1bHYQM0jM5yT4qAYqpAVZzdTwHLkg==",
+  "dgSpecHash": "+fGM4iwbGgZtYl2a9npBzdLZWS+fZ99lBcZAXxtzM6A0OothqCB2BZKaEeij1gNyDIGJ8AdDhV1RknWtBMtkBQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Cata\\Desktop\\II\\WebApplicationSAMP\\WebApplicationSAMP\\WebApplicationSAMP.csproj",
+  "projectFilePath": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\LastVersion\\II\\WebApplicationSAMP\\WebApplicationSAMP\\WebApplicationSAMP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cata\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Cata\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

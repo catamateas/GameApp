@@ -7,6 +7,8 @@
         public string Email { get; set; }
         public string Password { get; set; }
         public int Level { get; set; }
-        public string Faction { get; set; }
+        public int FactionId { get; set; }
+        public Faction Faction { get; set; }
+        public ICollection<UserClan> UserClans { get; set; } // Adăugăm colecția pentru UserClans
     }
 }

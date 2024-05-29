@@ -1,57 +1,190 @@
 import React, { Component } from 'react';
+import { Navigate } from 'react-router-dom';
 import { variables } from './Variables';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export class Profile extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            user: {
-                UserName: "",
-                ProfilePicture: "",
-                Level: 0,
-                HoursPlayed: 0,
-                PhoneNumber: "",
-                WarnCount: 0,
-                FactionWarnCount: 0,
-                factionName: "",
-                FactionRank: 0,
-                clanName: "",
-                ClanRank: 0
-            }
+            user: null,
+            faction: null,
+            loading: true,
+            error: null,
+            newPassword: "",
+            showModal: false,
+            redirectToLogin: false
         };
+
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
-        fetch(variables.API_URL + 'user/profile', {
-            method: 'GET',
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user && user.userId) {
+            fetch(`${variables.API_URL}user/${user.userId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    this.setState({ user: data });
+                    if (data.factionId) {
+                        return fetch(`${variables.API_URL}faction/${data.factionId}`);
+                    } else {
+                        this.setState({ loading: false });
+                    }
+                })
+                .then(response => {
+                    if (response && !response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response ? response.json() : null;
+                })
+                .then(factionData => {
+                    if (factionData) {
+                        this.setState({ faction: factionData, loading: false });
+                    }
+                })
+                .catch(error => {
+                    this.setState({ error: error.message, loading: false });
+                });
+        } else {
+            this.setState({ error: 'User not found', loading: false });
+        }
+    }
+
+    handlePasswordChange(e) {
+        this.setState({ newPassword: e.target.value });
+    }
+
+    handleSubmit() {
+        const { user, newPassword } = this.state;
+        if (newPassword.trim() === "") {
+            alert("Please enter a new password.");
+            return;
+        }
+
+        fetch(`${variables.API_URL}user/${user.userId}`, {
+            method: 'PUT',
             headers: {
-                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ...user,
+                password: newPassword
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .then(() => {
+            alert('Password changed successfully');
+            this.setState({ showModal: false, newPassword: "" });
+        })
+        .catch(error => {
+            alert('Failed to change password: ' + error.message);
+        });
+    }
+
+    handleChange() {
+        this.setState({ showModal: true });
+    }
+
+    handleDelete() {
+        const { user } = this.state;
+        fetch(`${variables.API_URL}user/${user.userId}`, {
+            method: 'DELETE',
+            headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then(response => response.json())
-        .then(data => {
-            this.setState({ user: data });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .then(() => {
+            localStorage.removeItem('user');
+            alert('Delete completed');
+            this.setState({ redirectToLogin: true });
+        })
+        .catch(error => {
+            alert('Failed to delete user: ' + error.message);
         });
     }
 
     render() {
-        const { user } = this.state;
+        const { user, faction, loading, error, showModal, newPassword, redirectToLogin } = this.state;
+
+        if (redirectToLogin) {
+            return <Navigate to="/login" />;
+        }
+
+        if (loading) {
+            return (
+                <div className="d-flex justify-content-center align-items-center vh-100">
+                    <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            );
+        }
+
+        if (error) {
+            return (
+                <div className="alert alert-danger" role="alert">
+                    {error}
+                </div>
+            );
+        }
 
         return (
-            <div className="container">
-                <h3>Profile</h3>
-                <div className="card p-4">
-                    <img src={variables.PHOTO_URL + user.ProfilePicture} alt="Profile" width="100" height="100" className="rounded-circle mx-auto d-block" />
-                    <p className="text-center mt-3"><strong>{user.UserName}</strong></p>
-                    <p><strong>Level:</strong> {user.Level}</p>
-                    <p><strong>Hours Played:</strong> {user.HoursPlayed}</p>
-                    <p><strong>Phone Number:</strong> {user.PhoneNumber}</p>
-                    <p><strong>Warnings:</strong> {user.WarnCount}/3</p>
-                    <p><strong>Faction Warnings:</strong> {user.FactionWarnCount}/3</p>
-                    <p><strong>Faction:</strong> {user.factionName} (Rank: {user.FactionRank})</p>
-                    <p><strong>Clan:</strong> {user.clanName} (Rank: {user.ClanRank})</p>
+            <div className="container my-5">
+                <div className="card mx-auto" style={{ maxWidth: '600px' }}>
+                    <div className="card-body text-center">
+                        {user && (
+                            <>
+                                <img src={variables.PHOTO_URL + user.profilePicture} alt="Profile" className="rounded-circle mb-3" style={{ width: '150px', height: '150px' }} />
+                                <h3 className="card-title">{user.userName}</h3>
+                                <p className="text-white" style={{ color: '#6c757d' }}>{user.email}</p>
+                                <p><strong>Level:</strong> {user.level}</p>
+                                <p><strong>Faction:</strong> {faction ? faction.factionName : 'None'}</p>
+                                <button className="btn btn-primary mt-3" onClick={this.handleChange}>Change Password</button>
+                                <button className="btn btn-danger mt-3 ms-2" onClick={this.handleDelete}>Delete Account</button>
+                            </>
+                        )}
+                    </div>
+                </div>
+
+                {/* Password Change Modal */}
+                <div className={`modal fade ${showModal ? 'show' : ''}`} style={{ display: showModal ? 'block' : 'none' }} tabIndex="-1" role="dialog">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Change Password</h5>
+                                <button type="button" className="btn-close" aria-label="Close" onClick={() => this.setState({ showModal: false })}></button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" className="form-control" value={newPassword} onChange={this.handlePasswordChange} />
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" onClick={() => this.setState({ showModal: false })}>Close</button>
+                                <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

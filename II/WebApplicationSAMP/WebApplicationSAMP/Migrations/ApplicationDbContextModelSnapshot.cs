@@ -33,37 +33,13 @@ namespace WebApplicationSAMP.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MemberCount")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ClanId");
 
                     b.ToTable("Clans");
-                });
-
-            modelBuilder.Entity("WebApplicationSAMP.Models.Complaint", b =>
-                {
-                    b.Property<int>("ComplaintId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ComplaintId"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ComplaintId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Complaints");
                 });
 
             modelBuilder.Entity("WebApplicationSAMP.Models.Faction", b =>
@@ -77,9 +53,6 @@ namespace WebApplicationSAMP.Migrations
                     b.Property<string>("FactionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MemberCount")
-                        .HasColumnType("int");
 
                     b.Property<int>("RequiredLevel")
                         .HasColumnType("int");
@@ -126,9 +99,8 @@ namespace WebApplicationSAMP.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Faction")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("FactionId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Level")
                         .HasColumnType("int");
@@ -143,18 +115,24 @@ namespace WebApplicationSAMP.Migrations
 
                     b.HasKey("UserId");
 
+                    b.HasIndex("FactionId");
+
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("WebApplicationSAMP.Models.Complaint", b =>
+            modelBuilder.Entity("WebApplicationSAMP.Models.UserClan", b =>
                 {
-                    b.HasOne("WebApplicationSAMP.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Navigation("User");
+                    b.Property<int>("ClanId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "ClanId");
+
+                    b.HasIndex("ClanId");
+
+                    b.ToTable("UserClans");
                 });
 
             modelBuilder.Entity("WebApplicationSAMP.Models.Ticket", b =>
@@ -166,6 +144,51 @@ namespace WebApplicationSAMP.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebApplicationSAMP.Models.User", b =>
+                {
+                    b.HasOne("WebApplicationSAMP.Models.Faction", "Faction")
+                        .WithMany("Users")
+                        .HasForeignKey("FactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Faction");
+                });
+
+            modelBuilder.Entity("WebApplicationSAMP.Models.UserClan", b =>
+                {
+                    b.HasOne("WebApplicationSAMP.Models.Clan", "Clan")
+                        .WithMany("UserClans")
+                        .HasForeignKey("ClanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApplicationSAMP.Models.User", "User")
+                        .WithMany("UserClans")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Clan");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebApplicationSAMP.Models.Clan", b =>
+                {
+                    b.Navigation("UserClans");
+                });
+
+            modelBuilder.Entity("WebApplicationSAMP.Models.Faction", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("WebApplicationSAMP.Models.User", b =>
+                {
+                    b.Navigation("UserClans");
                 });
 #pragma warning restore 612, 618
         }
