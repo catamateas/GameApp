@@ -6,15 +6,18 @@ export class Tickets extends Component {
         super(props);
         this.state = {
             tickets: [],
-            message: ""
+            message: "",
+            currentUser: null,
+            loading: true,
+            error: null
         };
 
         this.changemessage = this.changemessage.bind(this);
         this.addTicket = this.addTicket.bind(this);
     }
 
-    refreshList() {
-        fetch(variables.API_URL + `ticket/user/${this.props.currentUser.UserId}`)
+    refreshList(userId) {
+        fetch(`${variables.API_URL}ticket/user/${userId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -22,16 +25,22 @@ export class Tickets extends Component {
                 return response.json();
             })
             .then(data => {
-                this.setState({ tickets: data });
+                this.setState({ tickets: data, loading: false });
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
-                this.setState({ tickets: [] });
+                this.setState({ tickets: [], loading: false, error: error.message });
             });
     }
 
     componentDidMount() {
-        this.refreshList();
+        const currentUser = JSON.parse(localStorage.getItem('user'));
+        if (currentUser) {
+            this.setState({ currentUser });
+            this.refreshList(currentUser.userId);
+        } else {
+            this.setState({ loading: false, error: 'User not found. Please log in again.' });
+        }
     }
 
     changemessage(e) {
@@ -39,15 +48,21 @@ export class Tickets extends Component {
     }
 
     addTicket() {
-        fetch(variables.API_URL + 'tickets', {
+        const { message, currentUser } = this.state;
+        if (!currentUser || !currentUser.userId) {
+            alert('User not found. Please log in again.');
+            return;
+        }
+
+        fetch(variables.API_URL + 'ticket', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                message: this.state.message,
-                userId: this.props.currentUser.UserId
+                message: message,
+                userId: currentUser.userId
             })
         })
         .then(res => {
@@ -58,7 +73,7 @@ export class Tickets extends Component {
         })
         .then((result) => {
             alert(result.message || 'Ticket created successfully');
-            this.refreshList();
+            this.refreshList(currentUser.userId);
         })
         .catch((error) => {
             console.error('There was a problem with the fetch operation:', error);
@@ -67,7 +82,7 @@ export class Tickets extends Component {
     }
 
     render() {
-        const { tickets, message } = this.state;
+        const { tickets, message, loading, error } = this.state;
 
         return (
             <div className="container">
@@ -76,26 +91,30 @@ export class Tickets extends Component {
                     <textarea className="form-control" value={message} onChange={this.changemessage} placeholder="Add your ticket"></textarea>
                     <button className="btn btn-primary mt-2" onClick={this.addTicket}>Add Ticket</button>
                 </div>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ticketId</th>
-                            <th>userId</th>
-                            <th>createdAt</th>
-                            <th>message</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tickets.map(ticket =>
-                            <tr key={ticket.ticketId}>
-                                <td>{ticket.ticketId}</td>
-                                <td>{ticket.userId}</td>
-                                <td>{ticket.createdAt}</td>
-                                <td>{ticket.message}</td>
+                {loading && <p>Loading...</p>}
+                {error && <p>Error: {error}</p>}
+                {!loading && !error && (
+                    <table className="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Ticket ID</th>
+                                <th>User ID</th>
+                                <th>Created At</th>
+                                <th>Message</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {tickets.map(ticket =>
+                                <tr key={ticket.ticketId}>
+                                    <td>{ticket.ticketId}</td>
+                                    <td>{ticket.userId}</td>
+                                    <td>{new Date(ticket.createdAt).toLocaleString()}</td>
+                                    <td>{ticket.message}</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                )}
             </div>
         );
     }

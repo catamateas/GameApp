@@ -5,7 +5,7 @@ export class Complaints extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ticket: []
+            tickets: []
         };
     }
 
@@ -13,7 +13,7 @@ export class Complaints extends Component {
         fetch(variables.API_URL + 'ticket')
             .then(response => response.json())
             .then(data => {
-                this.setState({ ticket: data });
+                this.setState({ tickets: data });
             });
     }
 
@@ -22,37 +22,31 @@ export class Complaints extends Component {
     }
 
     render() {
-        const { ticket } = this.state;
+        const { tickets } = this.state;
 
         return (
             <div className="container">
-                <h3>ticket</h3>
+                <h3>Tickets</h3>
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>
-                                ticketId
-                            </th>
-                            <th>
-                                userId
-                            </th>
-                            <th>
-                                createdAt
-                            </th>
-                            <th>
-                                message
-                            </th>
+                            <th>Ticket ID</th>
+                            <th>User ID</th>
+                            <th>Username</th>
+                            <th>Created At</th>
+                            <th>Message</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {ticket.map(ticket =>
+                        {tickets.map(ticket => (
                             <tr key={ticket.ticketId}>
                                 <td>{ticket.ticketId}</td>
                                 <td>{ticket.userId}</td>
+                                <td>{ticket.userName}</td>
                                 <td>{ticket.createdAt}</td>
                                 <td>{ticket.message}</td>
                             </tr>
-                        )}
+                        ))}
                     </tbody>
                 </table>
             </div>

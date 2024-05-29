@@ -17,8 +17,32 @@ public class TicketController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetTickets()
     {
-        return Ok(await _context.Tickets.Include(t => t.User).ToListAsync());
+        var tickets = await _context.Tickets
+            .Include(t => t.User)
+            .Select(t => new
+            {
+                t.TicketId,
+                t.UserId,
+                t.User.UserName,
+                t.CreatedAt,
+                t.Message
+            })
+            .ToListAsync();
+
+        return Ok(tickets);
     }
+
+    [HttpGet("user/{userId}")]
+    public async Task<IActionResult> GetTicketsByUserId(int userId)
+    {
+        var tickets = await _context.Tickets
+            .Where(t => t.UserId == userId)
+            .Include(t => t.User)
+            .ToListAsync();
+
+        return Ok(tickets);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateTicket([FromBody] TicketDTO ticketDto)
     {
