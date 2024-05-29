@@ -6,6 +6,7 @@ export class Home extends Component {
         super(props);
         this.state = {
             user: [],
+            currentUser: null,
             loading: false,
             error: null
         };
@@ -30,11 +31,13 @@ export class Home extends Component {
     }
 
     componentDidMount() {
+        const currentUser = JSON.parse(localStorage.getItem('user'));
+        this.setState({ currentUser: currentUser ? currentUser.userId : null });
         this.refreshList();
     }
 
     render() {
-        const { user, loading, error } = this.state;
+        const { user, currentUser, loading, error } = this.state;
 
         return (
             <div className="row">
@@ -48,7 +51,10 @@ export class Home extends Component {
                     {error && <p>Error: {error}</p>}
                     <ul className="list-group">
                         {user.map(user => (
-                            <li key={user.userId} className="list-group-item">
+                            <li 
+                                key={user.userId} 
+                                className={`list-group-item ${currentUser === user.userId ? 'bg-success text-white' : ''}`}
+                            >
                                 <div className="d-inline-block ml-2">
                                     <p className="mb-0"><strong>userName:</strong> {user.userName}</p>
                                     <p className="mb-0"><strong>Email:</strong> {user.email}</p>

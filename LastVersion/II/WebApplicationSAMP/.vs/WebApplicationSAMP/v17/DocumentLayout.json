@@ -46,8 +46,7 @@
               "RelativeToolTip": "WebApplicationSAMP\\Models\\FactionDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T16:44:23.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T16:44:23.322Z"
             },
             {
               "$type": "Document",
@@ -72,8 +71,7 @@
               "RelativeToolTip": "WebApplicationSAMP\\Controllers\\UserController.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAQwCsAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T16:00:01.831Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T16:00:01.831Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "WebApplicationSAMP\\Models\\User.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T15:49:27.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T15:49:27.552Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "WebApplicationSAMP\\Models\\UserDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T15:48:39.328Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T15:48:39.328Z"
             },
             {
               "$type": "Document",
@@ -111,8 +107,7 @@
               "RelativeToolTip": "WebApplicationSAMP\\Controllers\\AuthenticationController.cs",
               "ViewState": "AQIAACUAAAAAAAAAAADwv0AAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T15:46:32.503Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-29T15:46:32.503Z"
             }
           ]
         }
