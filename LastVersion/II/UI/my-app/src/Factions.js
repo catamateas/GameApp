@@ -75,37 +75,38 @@ export class Factions extends Component {
     }
 
     updateClick() {
-        fetch(variables.API_URL + 'factions/' + this.state.factionId, { // Corrected URL
+        fetch(variables.API_URL + 'faction/' + this.state.factionId, { // Verifică URL-ul
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                factionId: this.state.factionId,
+                factionId: this.state.factionId,  // Include factionId dacă backend-ul necesită
                 factionName: this.state.factionName,
                 RequiredLevel: this.state.RequiredLevel
             })
         })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                // Handle empty response
-                if (res.status === 204) {
-                    return;
-                }
-                return res.json();
-            })
-            .then((result) => {
-                alert(result ? (result.message || "Faction updated successfully!") : "Faction updated successfully!");
-                this.refreshList();
-            })
-            .catch((error) => {
-                console.error('There was a problem with the update request:', error);
-                alert('Failed: ' + error.message);
-            });
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Handle empty response
+            if (res.status === 204) {
+                return;
+            }
+            return res.json();
+        })
+        .then((result) => {
+            alert(result ? (result.message || "Faction updated successfully!") : "Faction updated successfully!");
+            this.refreshList();
+        })
+        .catch((error) => {
+            console.error('There was a problem with the update request:', error);
+            alert('Failed: ' + error.message);
+        });
     }
+    
 
     render() {
         const {

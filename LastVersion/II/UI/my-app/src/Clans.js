@@ -52,7 +52,7 @@ export class Clans extends Component {
     }
 
     createClick() {
-        fetch(variables.API_URL + 'clans', {
+        fetch(variables.API_URL + 'clan', { // Asigură-te că URL-ul este corect
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -63,17 +63,18 @@ export class Clans extends Component {
                 description: this.state.description
             })
         })
-            .then(res => res.json())
-            .then((result) => {
-                alert(result.message || "Clan created successfully!");
-                this.refreshList();
-            }, (error) => {
-                alert('Failed');
-            })
+        .then(res => res.json())
+        .then((result) => {
+            alert(result.message || "Clan created successfully!");
+            this.refreshList();
+        }, (error) => {
+            alert('Failed');
+        })
     }
+    
 
     updateClick() {
-        fetch(variables.API_URL + 'clans/' + this.state.clanId, { // Corrected URL
+        fetch(variables.API_URL + 'clan/' + this.state.clanId, { // Verifică URL-ul
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -85,6 +86,35 @@ export class Clans extends Component {
                 description: this.state.description
             })
         })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Handle empty response
+            if (res.status === 204) {
+                return;
+            }
+            return res.json();
+        })
+        .then((result) => {
+            alert(result ? (result.message || "Clan updated successfully!") : "Clan updated successfully!");
+            this.refreshList();
+        })
+        .catch((error) => {
+            console.error('There was a problem with the update request:', error);
+            alert('Failed: ' + error.message);
+        });
+    }
+    
+    deleteClick(id) {
+        if (window.confirm('Are you sure?')) {
+            fetch(variables.API_URL + 'clan/' + id, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
@@ -96,44 +126,16 @@ export class Clans extends Component {
                 return res.json();
             })
             .then((result) => {
-                alert(result ? (result.message || "Clan updated successfully!") : "Clan updated successfully!");
+                alert(result ? (result.message || "Clan deleted successfully!") : "Clan deleted successfully!");
                 this.refreshList();
             })
             .catch((error) => {
-                console.error('There was a problem with the update request:', error);
+                console.error('There was a problem with the delete request:', error);
                 alert('Failed: ' + error.message);
             });
-    }
-
-    deleteClick(id) {
-        if (window.confirm('Are you sure?')) {
-            fetch(variables.API_URL + 'clans/' + id, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    // Handle empty response
-                    if (res.status === 204) {
-                        return;
-                    }
-                    return res.json();
-                })
-                .then((result) => {
-                    alert(result ? (result.message || "Clan deleted successfully!") : "Clan deleted successfully!");
-                    this.refreshList();
-                })
-                .catch((error) => {
-                    console.error('There was a problem with the delete request:', error);
-                    alert('Failed: ' + error.message);
-                });
         }
     }
+    
 
     render() {
         const {

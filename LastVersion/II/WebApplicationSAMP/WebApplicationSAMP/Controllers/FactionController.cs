@@ -30,23 +30,24 @@ public class FactionController : ControllerBase
         };
 
         _context.Factions.Add(faction);
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();  
         return Ok(faction);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateFaction(int id, [FromBody] FactionDTO factionDto)
+   [HttpPut("{id}")]
+public async Task<IActionResult> UpdateFaction(int id, [FromBody] FactionDTO factionDto)
+{
+    var existingFaction = await _context.Factions.FindAsync(id);
+    if (existingFaction == null)
     {
-        var existingFaction = await _context.Factions.FindAsync(id);
-        if (existingFaction == null)
-        {
-            return NotFound();
-        }
-
-        existingFaction.FactionName = factionDto.FactionName;
-        existingFaction.RequiredLevel = factionDto.RequiredLevel;
-
-        await _context.SaveChangesAsync();
-        return NoContent();
+        return NotFound();
     }
+
+    existingFaction.FactionName = factionDto.FactionName;
+    existingFaction.RequiredLevel = factionDto.RequiredLevel;
+
+    await _context.SaveChangesAsync();
+    return NoContent();
+}
+
 }

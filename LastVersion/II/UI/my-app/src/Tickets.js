@@ -8,13 +8,25 @@ export class Tickets extends Component {
             tickets: [],
             message: ""
         };
+
+        this.changemessage = this.changemessage.bind(this);
+        this.addTicket = this.addTicket.bind(this);
     }
 
     refreshList() {
         fetch(variables.API_URL + `ticket/user/${this.props.currentUser.UserId}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 this.setState({ tickets: data });
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                this.setState({ tickets: [] });
             });
     }
 
@@ -22,11 +34,11 @@ export class Tickets extends Component {
         this.refreshList();
     }
 
-    changemessage = (e) => {
+    changemessage(e) {
         this.setState({ message: e.target.value });
     }
 
-    addTicket = () => {
+    addTicket() {
         fetch(variables.API_URL + 'tickets', {
             method: 'POST',
             headers: {
@@ -38,13 +50,20 @@ export class Tickets extends Component {
                 userId: this.props.currentUser.UserId
             })
         })
-            .then(res => res.json())
-            .then((result) => {
-                alert(result);
-                this.refreshList();
-            }, (error) => {
-                alert('Failed');
-            })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return res.json();
+        })
+        .then((result) => {
+            alert(result.message || 'Ticket created successfully');
+            this.refreshList();
+        })
+        .catch((error) => {
+            console.error('There was a problem with the fetch operation:', error);
+            alert('Failed to create ticket: ' + error.message);
+        });
     }
 
     render() {
@@ -60,18 +79,10 @@ export class Tickets extends Component {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>
-                                ticketId
-                            </th>
-                            <th>
-                                userId
-                            </th>
-                            <th>
-                                createdAt
-                            </th>
-                            <th>
-                                message
-                            </th>
+                            <th>ticketId</th>
+                            <th>userId</th>
+                            <th>createdAt</th>
+                            <th>message</th>
                         </tr>
                     </thead>
                     <tbody>

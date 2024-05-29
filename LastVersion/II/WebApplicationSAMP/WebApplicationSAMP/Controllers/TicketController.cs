@@ -19,24 +19,24 @@ public class TicketController : ControllerBase
     {
         return Ok(await _context.Tickets.Include(t => t.User).ToListAsync());
     }
-
     [HttpPost]
     public async Task<IActionResult> CreateTicket([FromBody] TicketDTO ticketDto)
     {
-        var user = await _context.Users.FindAsync(ticketDto.UserId);
-        if (user == null)
+        if (ticketDto == null)
         {
-            return NotFound("User not found.");
+            return BadRequest("Ticket data is null");
         }
 
         var ticket = new Ticket
         {
+            Message = ticketDto.Message,
             UserId = ticketDto.UserId,
-            Message = ticketDto.Message
+            CreatedAt = DateTime.UtcNow
         };
 
         _context.Tickets.Add(ticket);
         await _context.SaveChangesAsync();
-        return Ok(ticket);
+
+        return Ok(new { message = "Ticket created successfully", ticket });
     }
 }
