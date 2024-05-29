@@ -20,7 +20,7 @@ function App() {
     if (user) {
       try {
         const parsedUser = JSON.parse(user);
-        console.log('User from localStorage:', parsedUser); // Adaugă acest console.log pentru a verifica datele
+        console.log('User from localStorage:', parsedUser);
         setIsLoggedIn(true);
         setCurrentUser(parsedUser);
       } catch (error) {
@@ -98,8 +98,8 @@ function App() {
 
         <Routes>
           <Route path='/home' element={<Home currentUser={currentUser} />} />
-          <Route path='/factions' element={<Factions />} />
-          <Route path='/clans' element={<Clans />} />
+          <Route path='/factions' element={<Factions isLoggedIn={isLoggedIn} />} />
+          <Route path='/clans' element={<Clans isLoggedIn={isLoggedIn} />} />
           <Route path='/complaints' element={<Complaints />} />
           <Route path='/tickets' element={isLoggedIn ? <Tickets currentUser={currentUser} /> : <Navigate to="/login" />} />
           <Route path='/profile' element={isLoggedIn ? <Profile currentUser={currentUser} /> : <Navigate to="/login" />} />
