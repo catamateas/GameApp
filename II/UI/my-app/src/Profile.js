@@ -181,7 +181,7 @@ export class Profile extends Component {
                                     <img src={variables.PHOTO_URL + user.profilePicture} alt="Profile" className="rounded-circle mb-3" style={{ width: '150px', height: '150px' }} />
                                 )}
                                 <h3 className="card-title">{user.userName}</h3>
-                                <p className="text-white">{user.email}</p> {/* Schimbăm culoarea textului pentru email */}
+                                <p className="text-white">{user.email}</p> 
                                 <p><strong>Level:</strong> {user.level}</p>
                                 <p><strong>Faction:</strong> {faction ? faction.factionName : 'None'}</p>
                                 <button className="btn btn-primary mt-3" onClick={this.handleChange}>Change Password</button>

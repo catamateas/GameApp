@@ -9,7 +9,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Faction> Factions { get; set; }
     public DbSet<Clan> Clans { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
-    public DbSet<UserClan> UserClans { get; set; } // Adăugăm DbSet pentru UserClan
+    public DbSet<UserClan> UserClans { get; set; } 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,12 +1,149 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|c:\\faculta\\sem2\\proiect_ii\\gameapp\\ii\\webapplicationsamp\\webapplicationsamp\\models\\userclan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|solutionrelative:webapplicationsamp\\models\\userclan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|c:\\faculta\\sem2\\proiect_ii\\gameapp\\ii\\webapplicationsamp\\webapplicationsamp\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|solutionrelative:webapplicationsamp\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|c:\\faculta\\sem2\\proiect_ii\\gameapp\\ii\\webapplicationsamp\\webapplicationsamp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|solutionrelative:webapplicationsamp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|c:\\faculta\\sem2\\proiect_ii\\gameapp\\ii\\webapplicationsamp\\webapplicationsamp\\models\\ticketdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|solutionrelative:webapplicationsamp\\models\\ticketdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|c:\\faculta\\sem2\\proiect_ii\\gameapp\\ii\\webapplicationsamp\\webapplicationsamp\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|solutionrelative:webapplicationsamp\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|c:\\faculta\\sem2\\proiect_ii\\gameapp\\ii\\webapplicationsamp\\webapplicationsamp\\models\\factiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|solutionrelative:webapplicationsamp\\models\\factiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|c:\\faculta\\sem2\\proiect_ii\\gameapp\\ii\\webapplicationsamp\\webapplicationsamp\\models\\faction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|solutionrelative:webapplicationsamp\\models\\faction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|c:\\faculta\\sem2\\proiect_ii\\gameapp\\ii\\webapplicationsamp\\webapplicationsamp\\models\\clandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E52C1BE2-B573-4BCB-A036-5D5D8629673E}|WebApplicationSAMP\\WebApplicationSAMP.csproj|solutionrelative:webapplicationsamp\\models\\clandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\UserDTO.cs",
+              "RelativeDocumentMoniker": "WebApplicationSAMP\\Models\\UserDTO.cs",
+              "ToolTip": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\UserDTO.cs",
+              "RelativeToolTip": "WebApplicationSAMP\\Models\\UserDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T04:50:56.355Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserClan.cs",
+              "DocumentMoniker": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\UserClan.cs",
+              "RelativeDocumentMoniker": "WebApplicationSAMP\\Models\\UserClan.cs",
+              "ToolTip": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\UserClan.cs",
+              "RelativeToolTip": "WebApplicationSAMP\\Models\\UserClan.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T04:50:55.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\User.cs",
+              "RelativeDocumentMoniker": "WebApplicationSAMP\\Models\\User.cs",
+              "ToolTip": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\User.cs",
+              "RelativeToolTip": "WebApplicationSAMP\\Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T04:50:49.399Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TicketDTO.cs",
+              "DocumentMoniker": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\TicketDTO.cs",
+              "RelativeDocumentMoniker": "WebApplicationSAMP\\Models\\TicketDTO.cs",
+              "ToolTip": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\TicketDTO.cs",
+              "RelativeToolTip": "WebApplicationSAMP\\Models\\TicketDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T04:50:48.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Ticket.cs",
+              "DocumentMoniker": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\Ticket.cs",
+              "RelativeDocumentMoniker": "WebApplicationSAMP\\Models\\Ticket.cs",
+              "ToolTip": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\Ticket.cs",
+              "RelativeToolTip": "WebApplicationSAMP\\Models\\Ticket.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T04:50:47.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FactionDTO.cs",
+              "DocumentMoniker": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\FactionDTO.cs",
+              "RelativeDocumentMoniker": "WebApplicationSAMP\\Models\\FactionDTO.cs",
+              "ToolTip": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\FactionDTO.cs",
+              "RelativeToolTip": "WebApplicationSAMP\\Models\\FactionDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T04:50:46.528Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Faction.cs",
+              "DocumentMoniker": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\Faction.cs",
+              "RelativeDocumentMoniker": "WebApplicationSAMP\\Models\\Faction.cs",
+              "ToolTip": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\Faction.cs",
+              "RelativeToolTip": "WebApplicationSAMP\\Models\\Faction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T04:50:45.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ClanDTO.cs",
+              "DocumentMoniker": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\ClanDTO.cs",
+              "RelativeDocumentMoniker": "WebApplicationSAMP\\Models\\ClanDTO.cs",
+              "ToolTip": "C:\\Faculta\\Sem2\\Proiect_II\\GameApp\\II\\WebApplicationSAMP\\WebApplicationSAMP\\Models\\ClanDTO.cs",
+              "RelativeToolTip": "WebApplicationSAMP\\Models\\ClanDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T04:50:43.77Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

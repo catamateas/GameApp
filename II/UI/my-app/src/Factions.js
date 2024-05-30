@@ -75,14 +75,14 @@ export class Factions extends Component {
     }
 
     updateClick() {
-        fetch(variables.API_URL + 'faction/' + this.state.factionId, { // Verifică URL-ul
+        fetch(variables.API_URL + 'faction/' + this.state.factionId, { 
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                factionId: this.state.factionId,  // Include factionId dacă backend-ul necesită
+                factionId: this.state.factionId,  
                 factionName: this.state.factionName,
                 RequiredLevel: this.state.RequiredLevel
             })
@@ -91,7 +91,6 @@ export class Factions extends Component {
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
-            // Handle empty response
             if (res.status === 204) {
                 return;
             }
